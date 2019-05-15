@@ -75,7 +75,8 @@ int start(char* string, Crcl* in, int ind)
 
 void circle(Crcl* in, int v)
 {
-    for (int i = 1; i <= v; i++) {
+    int inter;
+    for (int i = 1; i < v; i++) {
         printf("%d.circle(%.4f %.4f, %.4f)\n",
                (in + i)->ind,
                (in + i)->x,
@@ -83,6 +84,13 @@ void circle(Crcl* in, int v)
                (in + i)->r);
         printf("\tperimetr = %f\n", perimetr(in, i));
         printf("\tarea = %f\n", area(in, i));
+        printf("\tinter: \n");
+        for (int j = 1; j < v;j++) {
+    	    inter = intersection(in, i, j);
+    	    if (inter) {
+    		printf("\t\t%d. circle\n", (in + j)->ind);
+    		}
+    	}	
     }
 }
 
@@ -94,4 +102,16 @@ double perimetr(Crcl* in, int i)
 double area(Crcl* in, int i)
 {
     return (in + i)->r * (in + i)->r * M_PI;
+}
+
+int intersection(Crcl* in, int i, int j)
+{
+    double t;
+    t = sqrt((double)pow((in + i)->x - (in + j)->x, 2.00)
+                   + (double)pow((in + i)->y - (in + j)->y, 2.00));
+    if (t < (in + i)->r + (in + j)->r && (in + i)->r < t + (in + j)->r
+        && (in + j)->r < t + (in + i)->r) {
+        return 1;
+    }
+    return 0;
 }
