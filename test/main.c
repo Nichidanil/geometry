@@ -15,10 +15,10 @@ CTEST(test, perimetr)
     Crcl in = {1.1, 1.2, 1.3, 0};
 
     // When
-    const int result = perimetr(&in, 0);
+    const double result = perimetr(&in, 0);
 
     // Then
-    const int expected = 8.168141;
+    const double expected = 8.168141;
     ASSERT_EQUAL(expected, result);
 }
 
@@ -28,10 +28,10 @@ CTEST(test, area)
     Crcl in = {1.1, 1.2, 1.3, 0};
 
     // When
-    const int result = area(&in, 0);
+    const double result = area(&in, 0);
 
     // Then
-    const int expected = 5.309292;
+    const double expected = 5.309292;
     ASSERT_EQUAL(expected, result);
 }
 
@@ -49,10 +49,10 @@ CTEST(test, check_intersection_true)
     in[1].ind = 1;
 
     // When
-    const int result = intersection(in, 0, 1);
+    const double result = intersection(in, 0, 1);
 
     // Then
-    const int expected = 1;
+    const double expected = 1;
     ASSERT_EQUAL(expected, result);
 }
 
@@ -70,9 +70,9 @@ CTEST(test, check_intersection_false)
     in[1].ind = 1;
 
     // When
-    const int result = intersection(in, 0, 1);
+    const double result = intersection(in, 0, 1);
 
     // Then
-    const int expected = 0;
+    const double expected = 0;
     ASSERT_EQUAL(expected, result);
 }
